@@ -1,0 +1,14 @@
+/logs/
+/mybatis-generator/
+/target
+/.classpath
+/.DS_Store
+/.mymetadata
+/.tern-project
+/.project
+/.externalToolBuilders
+/.settings
+/.myeclipse/
+/bin
+/.idea/
+/weijiaoyi.iml
