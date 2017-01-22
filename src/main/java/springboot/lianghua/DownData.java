@@ -5,7 +5,10 @@ import org.java_websocket.handshake.ServerHandshake;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import springboot.Beans;
+import springboot.book.Login;
 import springboot.module.CONC;
 import springboot.repository.CONCRepository;
 
@@ -17,6 +20,7 @@ import java.util.Date;
  * 通过WS获取基础数据
  */
 public class DownData extends WebSocketClient {
+    public static Logger log = LoggerFactory.getLogger(DownData.class);
     public static DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy/MM/dd HH:mm:ss");
 
     private CONCRepository repository = Beans.getBean(CONCRepository.class);
@@ -29,7 +33,7 @@ public class DownData extends WebSocketClient {
 
     @Override
     public void onOpen(ServerHandshake serverHandshake) {
-        System.out.println(serverHandshake);
+        log.debug(serverHandshake.toString());
     }
 
     @Override
@@ -54,12 +58,11 @@ public class DownData extends WebSocketClient {
 
     @Override
     public void onClose(int i, String s, boolean b) {
-        System.out.println(i);
-        System.out.println(b);
+        log.debug(i + " " + s + " " + b);
     }
 
     @Override
     public void onError(Exception e) {
-        e.printStackTrace();
+        log.debug(e.getMessage());
     }
 }

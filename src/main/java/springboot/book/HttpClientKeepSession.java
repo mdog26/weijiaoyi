@@ -33,6 +33,8 @@ import java.util.List;
  *
  */
 public class HttpClientKeepSession {
+    public static String PHPSESSID = "";
+    public static String acw_tc = "";
 
 //    private static final Logger LOG = LogManager.getLogger(HttpClient.class);
     public  static CloseableHttpClient httpClient = null;
@@ -73,6 +75,12 @@ public class HttpClientKeepSession {
             List<Cookie> cookies = cookieStore.getCookies();
             for (Cookie cookie : cookies) {
 //                LOG.debug("key:" + cookie.getName() + "  value:" + cookie.getValue());
+                if("PHPSESSID".equals(cookie.getName())){
+                    PHPSESSID = cookie.getValue();
+                }
+                if("acw_tc".equals(cookie.getName())){
+                    acw_tc = cookie.getValue();
+                }
             }
         } finally {
 //            response.close();
@@ -99,6 +107,12 @@ public class HttpClientKeepSession {
             List<Cookie> cookies = cookieStore.getCookies();
             for (Cookie cookie : cookies) {
 //                LOG.debug("key:" + cookie.getName() + "  value:" + cookie.getValue());
+                if("PHPSESSID".equals(cookie.getName())){
+                    PHPSESSID = cookie.getValue();
+                }
+                if("acw_tc".equals(cookie.getName())){
+                    acw_tc = cookie.getValue();
+                }
             }
         } finally {
 //            response.close();
