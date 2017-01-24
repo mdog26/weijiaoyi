@@ -154,6 +154,8 @@ public class Login {
             String res = EntityUtils.toString(response.getEntity(), "utf-8");
             if(res.contains("成功")){
                 System.out.println(conc);
+            } else if(res.contains("下单异常")){
+                log.error(res);
             } else if(res.contains("登录超时或已在别处登录")){
                 Login.login(null);
             }else{
